@@ -1,2 +1,8 @@
 # my_debian_admin_script
-debian系统日常管理脚本，我经常用的
+
+我自用的一些 debian 系统运维脚本
+
+# 注
+
+- 脚本由AI生成，仅为我自用而写
+- 脚本仅支持在 debian发行版 上运行
