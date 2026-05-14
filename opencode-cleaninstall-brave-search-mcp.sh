@@ -5,18 +5,29 @@ npm i -g opencode-ai
 # 创建目标目录（如果不存在）
 mkdir -p ~/.config/opencode
 
+read -p "是否启用 Brave Search MCP？如果你在大陆网络环境的话，可能会有网络问题，建议关闭 (y/n): " -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    BRAVE_ENABLED="true"
+else
+    BRAVE_ENABLED="false"
+fi
+
 # 创建JSON配置文件
-cat > ~/.config/opencode/opencode.json << 'EOF'
+cat > ~/.config/opencode/opencode.json << EOF
 {
   "mcp": {
     "web-search": {
       "type": "local",
       "command": ["npx", "-y", "@brave/brave-search-mcp-server"],
-      "enabled": true,
+      "enabled": ${BRAVE_ENABLED},
       "environment": {
         "BRAVE_API_KEY": "{env:BRAVE_API_KEY}"
       }
     }
+  },
+  "tui": {
+    "animations": false
   }
 }
 EOF
